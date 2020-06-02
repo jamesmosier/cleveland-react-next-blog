@@ -4,8 +4,7 @@ import Container from '../components/container';
 import MoreStories from '../components/more-stories';
 import Intro from '../components/intro';
 import Layout from '../components/layout';
-import { getAllPosts } from '../lib/api';
-import { CMS_NAME } from '../lib/constants';
+import { getAllPosts } from '../lib/posts-api';
 
 export default function Index({ allPosts }) {
   const morePosts = allPosts.slice(1);
@@ -14,7 +13,7 @@ export default function Index({ allPosts }) {
     <>
       <Layout>
         <Head>
-          <title>Cleveland React Blog Example with {CMS_NAME}</title>
+          <title>Cleveland React Blog Example</title>
         </Head>
         <Container>
           <Intro />
