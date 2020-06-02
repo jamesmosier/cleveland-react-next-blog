@@ -7,8 +7,8 @@ import PostBody from '../../components/post-body';
 import Header from '../../components/header';
 import PostHeader from '../../components/post-header';
 import Layout from '../../components/layout';
-import { getPostBySlug, getAllPosts } from '../../lib/api';
 import PostTitle from '../../components/post-title';
+import { getPostBySlug, getAllPosts } from '../../lib/posts-api';
 import markdownToHtml from '../../lib/markdownToHtml';
 
 export default function Post({ post, morePosts, preview }) {
@@ -16,6 +16,7 @@ export default function Post({ post, morePosts, preview }) {
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
   }
+
   return (
     <Layout preview={preview}>
       <Container>
@@ -26,9 +27,7 @@ export default function Post({ post, morePosts, preview }) {
           <>
             <article className="mb-32">
               <Head>
-                <title>
-                  {post.title} | Next.js Blog Example for Cleveland React
-                </title>
+                <title>{post.title} | Next.js Blog Example for Cleveland React</title>
                 <meta property="og:image" content={post.ogImage.url} />
               </Head>
               <PostHeader
@@ -59,6 +58,7 @@ export async function getStaticProps({ params }) {
   const content = await markdownToHtml(post.content || '');
 
   return {
+    unstable_revalidate: 1,
     props: {
       post: {
         ...post,
