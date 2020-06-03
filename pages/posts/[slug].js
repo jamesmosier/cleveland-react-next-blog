@@ -27,7 +27,7 @@ export default function Post({ post, morePosts, preview }) {
           <>
             <article className="mb-32">
               <Head>
-                <title>{post.title} | Next.js Blog Example for Cleveland React</title>
+                <title>{post.title} | Cleveland React Blog</title>
                 <meta property="og:image" content={post.ogImage.url} />
               </Head>
               <PostHeader
