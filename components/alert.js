@@ -26,7 +26,7 @@ export default function Alert({ preview }) {
             <>
               The source code for this blog is{' '}
               <a
-                href="https://github.com/jamesmosier/cleveland-react-nextjs"
+                href="https://github.com/jamesmosier/cleveland-react-next-blog"
                 className="underline hover:text-success duration-200 transition-colors"
               >
                 available on GitHub
