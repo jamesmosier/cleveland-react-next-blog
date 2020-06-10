@@ -13,13 +13,14 @@ import markdownToHtml from '../../lib/markdownToHtml';
 
 export default function Post({ post, morePosts, preview }) {
   const router = useRouter();
+
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
   }
 
   return (
     <Layout preview={preview}>
-      <Container>
+      <Container isFallback={router.isFallback}>
         <Header />
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
@@ -72,13 +73,14 @@ export async function getStaticPaths() {
   const posts = getAllPosts(['slug']);
 
   return {
-    paths: posts.map(posts => {
+    // slicing some posts out of static generation so `fallback: true` can do its thing
+    paths: posts.slice(0, 1).map(post => {
       return {
         params: {
-          slug: posts.slug,
+          slug: post.slug,
         },
       };
     }),
-    fallback: false,
+    fallback: true,
   };
 }
