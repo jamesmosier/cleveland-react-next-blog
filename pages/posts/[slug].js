@@ -74,7 +74,7 @@ export async function getStaticPaths() {
 
   return {
     // slicing some posts out of static generation so `fallback: true` can do its thing
-    paths: posts.slice(0, 1).map(post => {
+    paths: posts.map(post => {
       return {
         params: {
           slug: post.slug,
