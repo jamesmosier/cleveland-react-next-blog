@@ -16,7 +16,7 @@ export default function Footer() {
               Read Documentation
             </a>
             <a
-              href="https://github.com/jamesmosier/cleveland-react-nextjs"
+              href="https://github.com/jamesmosier/cleveland-react-next-blog"
               className="mx-3 font-bold hover:underline"
             >
               View on GitHub
